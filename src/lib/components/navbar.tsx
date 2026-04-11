@@ -2,26 +2,21 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { NAV } from "@/lib/data";
+import { SITE, NAV } from "@/lib/data";
+import Image from "next/image";
 
 export default function SiteHeader() {
   const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 28);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   return (
-    <header
-      className={`topbar ${isScrolled ? "scrolled" : "unscrolled"}`.trim()}
-    >
-      <div className="container nav-shell">
-        <nav className="main-nav" aria-label="Main">
+    <header className="topbar">
+      <nav className="nav-shell" aria-label="Main">
+        <Link href="/" className="brand" aria-label="El Gran Castillo de Jagua home">
+          <Image src="/Logo.png" alt="El Gran Castillo de Jagua logo" width={36} height={36} />
+          <span className="brand-name">{SITE.name}</span>
+        </Link>
+
+        <div className="nav-links">
           {NAV.map((item) => (
             <Link
               key={item.href}
@@ -31,15 +26,8 @@ export default function SiteHeader() {
               {item.label}
             </Link>
           ))}
-        </nav>
-
-        <Link href="/" className="brand" aria-label="Pulse Coffee home">
-          <span className="brand-mark">PC</span>
-          <span className="brand-name">PULSE COFFEE</span>
-        </Link>
-
-        <Link className="order-btn" href="/menu">VIEW MENU</Link>
-      </div>
+        </div>
+      </nav>
     </header>
   );
 }
