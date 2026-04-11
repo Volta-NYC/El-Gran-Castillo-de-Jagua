@@ -1,21 +1,45 @@
-"use client"
+"use client";
 
-import Link from "next/link"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { NAV } from "@/lib/data";
 
-export default function Navbar() {
+export default function SiteHeader() {
+  const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 28);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <nav className="w-full border-b bg-white">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <div className="text-xl font-semibold">
-          <Link href="/">Business Name</Link>
-        </div>
+    <header
+      className={`topbar ${isScrolled ? "scrolled" : "unscrolled"}`.trim()}
+    >
+      <div className="container nav-shell">
+        <nav className="main-nav" aria-label="Main">
+          {NAV.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`nav-link ${pathname === item.href ? "active" : ""}`.trim()}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
 
-        <div className="flex gap-6 text-sm">
-          <Link href="/">Home</Link>
-          <Link href="/pages/about">About</Link>
-          <Link href="/pages/contact">Contact</Link>
-        </div>
+        <Link href="/" className="brand" aria-label="Pulse Coffee home">
+          <span className="brand-mark">PC</span>
+          <span className="brand-name">PULSE COFFEE</span>
+        </Link>
+
+        <Link className="order-btn" href="/menu">VIEW MENU</Link>
       </div>
-    </nav>
-  )
+    </header>
+  );
 }

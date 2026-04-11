@@ -1,22 +1,12 @@
-import Link from "next/link"
+import { SITE } from "@/lib/data";
 
-export default function Footer() {
+export default function SiteFooter() {
   return (
-    <footer className="border-t mt-16">
-      <div className="max-w-6xl mx-auto px-6 py-8 text-sm text-gray-500 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-col gap-1">
-          <div>© {new Date().getFullYear()} Business Name</div>
-          <Link
-            href="https://nyc.voltanpo.org"
-            target="_blank"
-            rel="noreferrer"
-            className="text-gray-600 hover:underline"
-          >
-            Website made by @VoltaNYC
-          </Link>
-        </div>
-        <div>Built with Volta</div>
+    <footer className="footer">
+      <div className="container footer-wrap">
+        <p className="footer-copy">{SITE.name} · {SITE.address}</p>
+        
       </div>
     </footer>
-  )
+  );
 }
