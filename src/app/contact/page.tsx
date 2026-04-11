@@ -1,4 +1,9 @@
 import { SITE } from "@/lib/data";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Hours & Contact', 
+};
 
 export default function ContactPage() {
   return (

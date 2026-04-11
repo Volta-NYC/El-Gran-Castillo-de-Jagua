@@ -3,8 +3,14 @@ import Navbar from "@/lib/components/navbar"
 import Footer from "@/lib/components/footer"
 
 export const metadata = {
-  title: "El Gran Castillo de Jagua",
-  description: "Authentic Dominican cuisine in Brooklyn, NY."
+ title: {
+    default: "El Gran Castillo de Jagua",
+    template: "%s | El Gran Castillo de Jagua",
+  },
+  description: "Authentic Dominican cuisine in Brooklyn, NY.",
+  icons: {
+    icon: '/Logo.png', 
+  }
 }
 
 export default function RootLayout({
