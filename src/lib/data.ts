@@ -1,27 +1,19 @@
 export const SITE = {
   name: "El Gran Castillo de Jagua",
   tagline: "Authentic Dominican cuisine in Brooklyn, NY.",
-  phone: "",
-  email: "",
+  phone: "718-622-8700",
   address: "355 Flatbush Ave, Brooklyn, NY 11238",
   hours: {
-    weekdays: { label: "Monday – Saturday", time: "TBD" },
-    sunday:   { label: "Sunday",            time: "TBD" },
+    weekdays: { label: "Monday – Saturday", time: "8AM - 10PM" },
+    sunday:   { label: "Sunday",            time: "8AM - 9PM" },
   },
   mapsUrl: "https://maps.app.goo.gl/5dcAWcnLoyizeC5W6",
-  socials: {
-    instagram: "https://instagram.com/pulsecoffee.nyc",
-  },
 };
 
 export const NAV = [
   { label: "Menu",    href: "/menu"    },
   { label: "Hours & Contact", href: "/contact" },
 ] as const;
-
-export const PHOTOS = {
-  hero: "/images/hero.jpg",
-} as const;
 
 export const BREAKFAST_MENU_SECTIONS = [
   {

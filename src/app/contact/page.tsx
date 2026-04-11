@@ -7,53 +7,56 @@ export default function ContactPage() {
         <div className="page-hero-overlay" />
         <div className="container page-hero-content">
           <p className="eyebrow">VISIT US</p>
-          <h1>Hours & Contact</h1>
+          <h1>Hours &amp; Contact</h1>
         </div>
       </section>
 
-      <section className="container contact-body">
-        <div className="contact-combined">
+      <section className="contact-body">
+        <div className="container">
+          <div className="contact-split">
 
-          <div className="contact-row">
-            <span className="contact-icon">📍</span>
-            <div>
-              <h3>Address</h3>
-              <p>{SITE.address}</p>
-              <a href={SITE.mapsUrl} target="_blank" rel="noopener noreferrer" className="contact-link">
-                Get Directions →
-              </a>
-            </div>
-          </div>
+            {}
+            <div className="contact-info">
+              <div className="contact-block">
+                <p className="contact-info-label">Address</p>
+                {}
+                <a
+                  href={SITE.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-address-link"
+                >
+                  355 Flatbush Ave<br />
+                  Brooklyn, NY 11238
+                </a>
+              </div>
 
-          <div className="contact-divider" />
+              <div className="contact-divider-line" />
 
-          <div className="contact-row">
-            <span className="contact-icon">📞</span>
-            <div>
-              <h3>Phone</h3>
-              <p>{SITE.phone || "Coming soon"}</p>
-            </div>
-          </div>
-
-          <div className="contact-divider" />
-
-          <div className="contact-row">
-            <span className="contact-icon">🕐</span>
-            <div>
-              <h3>Hours</h3>
-              <div className="hours-list">
-                <div className="hours-row">
-                  <span>{SITE.hours.weekdays.label}</span>
-                  <span className="hours-time">{SITE.hours.weekdays.time}</span>
-                </div>
-                <div className="hours-row">
-                  <span>{SITE.hours.sunday.label}</span>
-                  <span className="hours-time">{SITE.hours.sunday.time}</span>
-                </div>
+              <div className="contact-block">
+                <p className="contact-info-label">Phone</p>
+                <a href={`tel:${SITE.phone.replace(/\D/g, "")}`} className="contact-phone-link">
+                  {SITE.phone}
+                </a>
               </div>
             </div>
-          </div>
 
+            {}
+            <div className="contact-vertical-divider" />
+
+            {}
+            <div className="contact-hours">
+              <div className="hours-block">
+                <p className="hours-day-label">{SITE.hours.weekdays.label}</p>
+                <p className="hours-time">{SITE.hours.weekdays.time}</p>
+              </div>
+              <div className="hours-block">
+                <p className="hours-day-label">{SITE.hours.sunday.label}</p>
+                <p className="hours-time">{SITE.hours.sunday.time}</p>
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
     </main>
